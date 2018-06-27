@@ -1,0 +1,6 @@
+vizh5p.plot:
+  title: 'VizH5P Display'
+  description: 'Shows XAPI data in tabular and graphical manner'
+  parent: system.admin_config_system
+  route_name: vizh5p.plot
+  menu_name: devel
