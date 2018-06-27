@@ -123,7 +123,25 @@
                 xaxis: 'x', 
                 yaxis: 'y'
               };
-              trace2 = {
+              if(xAxis2.length==1)
+              {
+                trace2 = {
+                x: xAxis2,
+                y: yAxis2, 
+                line: {
+                  color: 'rgba(0,0,128,1)', 
+                  shape: 'hv'
+                }, 
+                mode: 'markers', 
+                name: 'interacted', 
+                type: 'scatter', 
+                xaxis: 'x', 
+                yaxis: 'y'
+              };
+              }
+              else
+              {
+                trace2 = {
                 x: xAxis2,
                 y: yAxis2, 
                 line: {
@@ -135,8 +153,8 @@
                 type: 'scatter', 
                 xaxis: 'x', 
                 yaxis: 'y'
-              };
-
+              };  
+              }
               data = [trace1,trace2];
               layout = {
                 dragmode: 'zoom', 
