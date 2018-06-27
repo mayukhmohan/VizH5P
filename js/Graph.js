@@ -45,12 +45,181 @@
               var yAxis3 = new Array();
               if(answered==-1 && arr.length==0){
                 alert("Only Attempted");
+                xAxis.push(attempted);
+                yAxis.push(1);
+                trace = {
+                x: xAxis,
+                y: yAxis, 
+                line: {
+                  color: 'rgba(128,0,0,1)', 
+                  shape: 'hv'
+                }, 
+                mode: 'markers', 
+                name: 'attempted', 
+                type: 'scatter', 
+                xaxis: 'x', 
+                yaxis: 'y',
+                marker: { size: 12 }
+              };
+
+              data = [trace];
+              layout = {
+                dragmode: 'zoom', 
+                margin: {
+                  r: 10, 
+                  t: 25, 
+                  b: 40, 
+                  l: 60
+                }, 
+                showlegend: true, 
+                xaxis: {
+                  domain: [0, 1], 
+                  title: 'x'
+                }, 
+                yaxis: {
+                  domain: [0, 1], 
+                  title: 'y'
+                }
+              };
+              Plotly.newPlot(TESTER, {
+                data: data,
+                layout: layout
+              });
               }
               else if(answered==-1 && arr.length!=0){
                 alert("Attempted and Interacted");
+                xAxis.push(0);
+                xAxis.push(arr[0]-attempted);
+                yAxis.push(1);
+                yAxis.push(1);
+                xAxis.push(arr[0]-attempted);
+                yAxis.push(2);
+                var len = xAxis.length;
+                for(var i=0;i<arr.length-1;i++)
+                {
+                  xAxis.push(arr[i+1]-arr[i]+xAxis[len-1]+i);
+                  yAxis.push(2);
+                }
+                for(var i=0;i<xAxis.length;i++) {
+                  if(yAxis[i]==1) {
+                      xAxis1.push(xAxis[i]);
+                      yAxis1.push(yAxis[i]);
+                  }
+                  else if(yAxis[i]==2) {
+                      xAxis2.push(xAxis[i]);
+                      yAxis2.push(yAxis[i]);
+                  }
+                }
+              trace1 = {
+                x: xAxis1,
+                y: yAxis1, 
+                line: {
+                  color: 'rgba(214,39,40,1)', 
+                  shape: 'hv'
+                }, 
+                mode: 'lines', 
+                name: 'attempted', 
+                type: 'scatter', 
+                xaxis: 'x', 
+                yaxis: 'y'
+              };
+              trace2 = {
+                x: xAxis2,
+                y: yAxis2, 
+                line: {
+                  color: 'rgba(0,0,128,1)', 
+                  shape: 'hv'
+                }, 
+                mode: 'lines', 
+                name: 'interacted', 
+                type: 'scatter', 
+                xaxis: 'x', 
+                yaxis: 'y'
+              };
+
+              data = [trace1,trace2];
+              layout = {
+                dragmode: 'zoom', 
+                margin: {
+                  r: 10, 
+                  t: 25, 
+                  b: 40, 
+                  l: 60
+                }, 
+                showlegend: true, 
+                xaxis: {
+                  domain: [0, 1], 
+                  title: 'x'
+                }, 
+                yaxis: {
+                  domain: [0, 1], 
+                  title: 'y'
+                }
+              };
+              Plotly.newPlot(TESTER, {
+                data: data,
+                layout: layout
+              });
               }
               else if(arr.length==0){
                 alert("Attempted and Answered");
+                xAxis1.push(attempted);
+                yAxis1.push(1);
+                xAxis2.push(answered);
+                yAxis2.push(3);
+                trace1 = {
+                x: xAxis1,
+                y: yAxis1, 
+                line: {
+                  color: 'rgba(128,0,0,1)', 
+                  shape: 'hv'
+                }, 
+                mode: 'markers', 
+                name: 'attemted', 
+                type: 'scatter', 
+                xaxis: 'x', 
+                yaxis: 'y',
+                marker: { size: 12 }
+              };
+                trace2 = {
+                x: xAxis2,
+                y: yAxis2, 
+                line: {
+                  color: 'rgba(0,128,0,1)', 
+                  shape: 'hv'
+                }, 
+                mode: 'markers', 
+                name: 'answered', 
+                type: 'scatter', 
+                xaxis: 'x', 
+                yaxis: 'y',
+                marker: { size: 12 }
+              };
+                
+
+              data = [trace1,trace2];
+              layout = {
+                dragmode: 'zoom', 
+                margin: {
+                  r: 10, 
+                  t: 25, 
+                  b: 40, 
+                  l: 60
+                }, 
+                showlegend: true, 
+                xaxis: {
+                  domain: [0, 1], 
+                  title: 'x'
+                }, 
+                yaxis: {
+                  domain: [0, 1], 
+                  title: 'y'
+                }
+              };
+              Plotly.newPlot(TESTER, {
+                data: data,
+                layout: layout
+              });
               }
               else{
                 xAxis.push(0);
@@ -86,8 +255,6 @@
                     yAxis3.push(yAxis[i]);
                   }
                 }
-              }
-              
               trace1 = {
                 x: xAxis1,
                 y: yAxis1, 
@@ -152,6 +319,9 @@
                 data: data,
                 layout: layout
               });
+              }
+              
+
             }
           });
         }
